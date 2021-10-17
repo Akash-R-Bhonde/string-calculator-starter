@@ -37,4 +37,20 @@ class StringCalculatorShould {
     	StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3+6+15, stringCalculator.add("//;\n3;6;15"));
     }
+    @Test
+    public final void whenNegativeNumberIsUsedThenRuntimeExceptionIsThrown() {
+    	StringCalculator stringCalculator = new StringCalculator();
+        assertThrows(RuntimeException.class,()->stringCalculator.add("3,-6,15,18,46,33"));
+    }
+    @Test
+    public final void whenNegativeNumbersAreUsedThenRuntimeExceptionIsThrown() {
+        RuntimeException exception = null;
+        try {
+            StringCalculator.add("3,-6,15,-18,46,33");
+        } catch (RuntimeException e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertEquals("Negatives not allowed: [-6, -18]", exception.getMessage());
+    }
 }
