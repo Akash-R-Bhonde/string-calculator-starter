@@ -27,4 +27,9 @@ class StringCalculatorShould {
     	 StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3+6+15+18+46+33, stringCalculator.add("3,6,15,18,46,33"));
     }
+    @Test
+    public final void whenNewLineIsUsedBetweenNumbersThenReturnValuesAreTheirSums() {
+    	StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3+6+15, stringCalculator.add("3,6\n15"));
+    }
 }
