@@ -32,4 +32,9 @@ class StringCalculatorShould {
     	StringCalculator stringCalculator = new StringCalculator();
         assertEquals(3+6+15, stringCalculator.add("3,6\n15"));
     }
+    @Test
+    public final void whenDelimiterIsSpecifiedThenItIsUsedToSeparateNumbers() {
+    	StringCalculator stringCalculator = new StringCalculator();
+        assertEquals(3+6+15, stringCalculator.add("//;\n3;6;15"));
+    }
 }
